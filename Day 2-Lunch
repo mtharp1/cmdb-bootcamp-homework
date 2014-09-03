@@ -25,3 +25,10 @@ for line in f:
 print nl
 
 17444398
+
+f=open("accepted_hits.sam")
+nl=0
+for i, line in enumerate(f):    
+    fields = line.rstrip("\r\n").split("\t")
+    if i>16:
+        print (fields[2])
