@@ -93,3 +93,12 @@ df8=pd.read_table(cufflinks_output_915)
 columns_of_interest = ["FPKM", "gene_short_name"]
 #print df1, df2, df3, df4, df5, df6, df7, df8 [columns_of_interest] 
 df1, df2, df3, df4, df5, df6, df7, df8.to_csv("sxl.csv", sep="\t", index=False)
+
+Question 3.
+#!/usr/bin/env python
+import pandas as pd
+cufflinks_output = "/Users/cmdb/data/results/sxl.csv"
+df=pd.read_table(cufflinks_output)
+Sxl = df["gene_short_name"].str.contains("Sxl")
+print df[Sxl]
+
