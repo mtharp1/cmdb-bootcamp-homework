@@ -1,0 +1,104 @@
+Question 1.
+#!/usr/bin/env python
+
+import pandas as pd
+cufflinks_output = "/Users/cmdb/data/results/SRR072893_clout/genes.fpkm_tracking"
+df=pd.read_table(cufflinks_output)  
+
+import matplotlib.pyplot as plt
+cufflinks_output2 = "/Users/cmdb/data/results/SRR072915_clout/genes.fpkm_tracking"
+df2=pd.read_table(cufflinks_output2)
+
+fm= open (cufflinks_output)
+ff= open (cufflinks_output2)
+
+nlm=0
+while True:
+    line=fm.readline()
+    if line == "":
+        break
+    else:
+        nlm = nlm + 1
+print nlm
+
+nlf = 0
+while True:
+    line=ff.readline()
+    if line == "":
+        break
+    else:
+        nlf = nlf + 1
+print nlf
+
+a=nlm/3
+b=2*nlm
+
+y=nlf/3
+z=2*nlf
+
+males = df.sort("FPKM", ascending=False).head()
+females = df2.sort("FPKM", ascending=False).head()
+
+
+males_1 = males[0:a]
+males_2 = males[a:b]
+males_3 = males[b:nlm]
+
+females_1 = females[0:y]
+females_2 = females[y:z]
+females_3 = females[z:nlf]
+
+#print males_1.describe()
+#print males_2.describe()
+#print males_3.describe()
+
+#print females_1.describe()
+#print females_2.describe()
+#print females_3.describe()
+
+plt.boxplot(["males_1":df["FPKM"], "males_2":df["FPKM"], "males_3":df["FPKM"], "females_1":df2["FPKM"], "females_2":["FPKM"], "females_3":["FPKM"])
+plt.figure()
+plt.boxplot(df['FPKM'], df2['FPKM'])
+plt.savefig("boxplot.png")
+
+
+Question 2. 
+#!/usr/bin/env python
+import pandas as pd
+cufflinks_output_905="/Users/cmdb/data/results/SRR072905_clout/genes.fpkm_tracking"
+df1=pd.read_table(cufflinks_output_905) 
+
+cufflinks_output_906="/Users/cmdb/data/results/SRR072906_clout/genes.fpkm_tracking"
+df2=pd.read_table(cufflinks_output_906) 
+
+cufflinks_output_907="/Users/cmdb/data/results/SRR072907_clout/genes.fpkm_tracking"
+df3=pd.read_table(cufflinks_output_907)
+
+cufflinks_output_908="/Users/cmdb/data/results/SRR072908_clout/genes.fpkm_tracking"
+df4=pd.read_table(cufflinks_output_908) 
+
+cufflinks_output_909="/Users/cmdb/data/results/SRR072909_clout/genes.fpkm_tracking"
+df5=pd.read_table(cufflinks_output_909) 
+
+cufflinks_output_911="/Users/cmdb/data/results/SRR072911_clout/genes.fpkm_tracking"
+df6=pd.read_table(cufflinks_output_911) 
+
+cufflinks_output_913="/Users/cmdb/data/results/SRR072913_clout/genes.fpkm_tracking"
+df7=pd.read_table(cufflinks_output_913)
+
+cufflinks_output_915="/Users/cmdb/data/results/SRR072915_clout/genes.fpkm_tracking"
+df8=pd.read_table(cufflinks_output_915)  
+
+ 
+columns_of_interest = ["FPKM", "gene_short_name"]
+#print df1, df2, df3, df4, df5, df6, df7, df8 [columns_of_interest] 
+df1, df2, df3, df4, df5, df6, df7, df8.to_csv("sxl.csv", sep="\t", index=False)
+
+Question 3.
+#!/usr/bin/env python
+import pandas as pd
+cufflinks_output = "/Users/cmdb/data/results/sxl.csv"
+df=pd.read_table(cufflinks_output)
+Sxl = df["gene_short_name"].str.contains("Sxl")
+print df[Sxl]
+
