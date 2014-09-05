@@ -32,3 +32,17 @@ class BLASTReader(object):#has variables (properties) and functionality, class i
     def __iter__(self):     
         return self    ##add for turning into iterator
         
+
+#!/usr/bin/env python
+
+"""
+Parse a single BLAST record from stdin and print it.
+"""
+import sys
+
+from blast import BLASTReader
+
+reader = BLASTReader(sys.stdin)
+
+for sid, sequence in reader:
+        print sid, sequence
