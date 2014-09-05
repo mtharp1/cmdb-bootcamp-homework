@@ -6,7 +6,7 @@ for line in f:
         nl=nl+1
 print nl
 
-18417196
+=18417196
 
 f=open("accepted_hits.sam")
 nl=0
@@ -15,7 +15,7 @@ for line in f:
         nl=nl+1
 print nl
 
-229352
+=229352
 
 f=open("accepted_hits.sam")
 nl=0
@@ -24,7 +24,7 @@ for line in f:
         nl=nl+1
 print nl
 
-17444398
+=17444398
 
 f=open("accepted_hits.sam")
 nl=0
