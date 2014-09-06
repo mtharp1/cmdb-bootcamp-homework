@@ -1,5 +1,23 @@
 #!/usr/bin/env python
 
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ awk '$3=="transcript"' transcripts.gtf | grep "+" > plus_transcripts.txt
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ awk '$3=="transcript"' transcripts.gtf | grep "-" > minus_transcripts.txt
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools flank -l 250 -r 0 -i plus_transcripts.gtf -g /Users/cmdb/cmdb-bootcamp-homework/genome_columns.gff > plus_transcripts_250.gtf
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools slop -l 0 -r 250 -i plus_transcripts_250.gtf -g /Users/cmdb/cmdb-bootcamp-homework/genome_columns.gff > plus_transcripts_slop_500.gtf 
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools getfasta -fi /Users/cmdb/data/genomes/dmel-all-chromosome-r5.57.fasta -bed plus_transcripts_500.gtf -fo plus_seq_500.fasta
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools flank -l 0 -r 250 -i minus_transcripts.gtf -g /Users/cmdb/cmdb-bootcamp-homework/genome_columns.gff > minus_transcripts_250_2.gtf
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools slop -l 250 -r 0 -i minus_transcripts_250_2.gtf -g /Users/cmdb/cmdb-bootcamp-homework/genome_columns.gff > minus_transcripts_500_2.gtf
+
+#/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools getfasta -s -fi /Users/cmdb/data/genomes/dmel-all-chromosome-r5.57.fasta -bed minus_transcripts_500_2.gtf -fo minus_seq_500.fasta
+
+
+
 import sys
 
 list_gene_names = []
