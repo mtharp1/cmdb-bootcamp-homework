@@ -57,12 +57,12 @@ import matplotlib.pyplot as plot
 import statsmodels.api as sm
 
 df = pandas.read_csv( "GC_content.csv", index_col=0)
-model = sm.formula.ols( formula="gene_name~fraction_GC", data=df )
+model = sm.formula.ols( formula="FPKM~fraction_GC", data=df )
 #left of ~ dependent variable, right of ~ is independent variable
 res = model.fit()
 print res.summary()
 
-plot.scatter( df["gene_name"], df["fraction_GC"] )
+plot.scatter( df["FPKM"], df["fraction_GC"] )
 plot.savefig( "GC_content.png" )
 
 
