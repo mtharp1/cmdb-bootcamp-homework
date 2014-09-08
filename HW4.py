@@ -17,7 +17,7 @@
 #/Users/cmdb/cmdb-bootcamp-homework/SRR072893_thout $ bedtools getfasta -s -fi /Users/cmdb/data/genomes/dmel-all-chromosome-r5.57.fasta -bed minus_transcripts_500_2.gtf -fo minus_seq_500.fasta
 
 
-
+#Use to find GC content
 import sys
 
 list_gene_names = []
@@ -32,10 +32,10 @@ while 1:
         break
     else:
         
-GC_counter = 0.0
-AT_counter = 0.0
+        GC_counter = 0.0
+        AT_counter = 0.0
 
-    if line.startswith (">") == gene_name 
+        if line.startswith (">") == gene_name: 
         
         "G" or nucleotides [i] == "C"):
             GC_counter += 1
@@ -50,6 +50,20 @@ fraction_GC = GC_counter / (GC_counter + AT_counter)
 print fraction_GC
 
 
+#Use to make linear regression model
+#!/usr/bin/env python
+import pandas
+import matplotlib.pyplot as plot
+import statsmodels.api as sm
+
+df = pandas.read_csv( "GC_content.csv", index_col=0)
+model = sm.formula.ols( formula="gene_name~fraction_GC", data=df )
+#left of ~ dependent variable, right of ~ is independent variable
+res = model.fit()
+print res.summary()
+
+plot.scatter( df["gene_name"], df["fraction_GC"] )
+plot.savefig( "GC_content.png" )
 
 
 
